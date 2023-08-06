@@ -191,7 +191,7 @@ describe("Given I am connected as an employee", () => {
         mockStore.bills.mockImplementationOnce(() => {
           return {
             list: () => {
-              return Promise.reject(new Error("Erreur 404"));
+              return Promise.reject(new Error("Erreur"));
             },
           };
         });
@@ -200,9 +200,6 @@ describe("Given I am connected as an employee", () => {
         const databody = await screen.getByTestId("tbody");
         // si ça renvoit une erreur 404 alors on ne retourne pas une liste de bills ?
         expect(databody.childElementCount).toEqual(0);
-
-        // const message = await screen.getByText(/Erreur 404/);
-        // expect(message).toBeTruthy();
       });
 
       test("fetches bills from an API and fails with 404 message error", async () => {
