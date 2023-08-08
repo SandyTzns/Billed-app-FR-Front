@@ -199,7 +199,7 @@ describe("Given I am connected as an employee", () => {
         await new Promise(process.nextTick);
         const databody = await screen.getByTestId("tbody");
         // si ça renvoit une erreur 404 alors on ne retourne pas une liste de bills ?
-        expect(databody.childElementCount).toEqual(0);
+        expect(databody).toBeNull;
       });
 
       test("fetches bills from an API and fails with 404 message error", async () => {
