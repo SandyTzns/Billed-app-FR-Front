@@ -1,7 +1,7 @@
 import VerticalLayout from "./VerticalLayout.js";
 import ErrorPage from "./ErrorPage.js";
 import LoadingPage from "./LoadingPage.js";
-
+import { formatDate } from "../app/format.js";
 import Actions from "./Actions.js";
 
 const row = (bill) => {
@@ -9,7 +9,7 @@ const row = (bill) => {
     <tr>
       <td>${bill.type}</td>
       <td>${bill.name}</td>
-      <td>${bill.date}</td>
+      <td>${formatDate(bill.date)}</td>
       <td>${bill.amount} €</td>
       <td>${bill.status}</td>
       <td>
@@ -51,6 +51,7 @@ export default ({ data: bills, loading, error }) => {
   } else if (error) {
     return ErrorPage(error);
   }
+  console.log(bills);
 
   return `
     <div class='layout'>
